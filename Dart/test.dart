@@ -1,12 +1,42 @@
 void main() {
-  int num1 = 10;
-  int num2 = 20;
+  // bool isTrue = false;
 
-  int sum = add(num1, num2);
+  // if
+  /*
+  if (isTrue) {
+    print("True");
+  } else if (!isTrue) {
+    print("False");
+  }
+  */
 
-  print(sum);
-}
+  // Switch
+  /**
+   * switch (비교 대상){
+   *  case (조건식 1):
+   *  case (조건식 1):
+   *  case (조건식 1):
+   *  default :
+   * }
+   * 
+   */
 
-int add(int num1, int num2) {
-  return num1 + num2;
+  int num = 101;
+
+  switch (num) {
+    case 1:
+      print(num);
+    case 2:
+      print(num);
+    case 3:
+      print(num);
+    case 4:
+      print(num);
+    case 5:
+      print(num);
+    case > 100:
+      print("100이상!");
+    default:
+      print("감자감자");
+  }
 }
