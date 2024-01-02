@@ -1,43 +1,26 @@
 void main() {
-  int num1 = 10;
-  /** try catch finally
-  try {
-    // 예외 발생 가능 코드
-    // print(10 ~/ 0); // ~/ = 나눈 값의 몫을 출력
-    print(10 / 0);
-  } catch (error, stack) {
-    // 예외 발생시 동작하는 코드
-    print(error);
-    print(stack); // error가 발생한 순간을 찍는다
-  } finally {
-    // 예외가 발생하든, 발생하지 않든 무조건 실행
-    print("예외 처리 통과");
+  /** async await Future
+  Future<void> todo(int second) async {
+    await Future.delayed(Duration(seconds: second));
+    print("ToDo Done in $second seconds");
   }
+
+  todo(3); // 2번 째
+  todo(1); // 가장 먼저
+  todo(5); // 3번 째 실행
    */
 
-  /** try on
-  try {
-    print(10 ~/ 0);
-    // Error를 세부적으로 잡을 때 on 사용
-  } on UnsupportedError catch (error, stack) {
-    print("~/ 해당 연산자는 0으로 나눌 수 없습니다.");
-  } on TypeError catch (error, stack) {
-    print("Null 값이 참조 되었습니다.");
-  } catch (error, stack) { // catch는 모든 에러 잡기
-    print("$error");
+  Stream<int> todo() async* {
+    // Stream은 지속적인 동작 즉, 끊기지 않아야 한다.
+    int counter = 0;
+    while (counter <= 10) {
+      counter++;
+      await Future.delayed(Duration(seconds: 1));
+      print("TODO is Running $counter");
+      yield counter; // Stream에 counter를 전달 즉, return과 비슷한 동작
+    }
+    print("TODO is Done");
   }
-   */
 
-  try {
-    throw Exception("Unknown Error"); // 예외를 만들어서 던진다. 즉, 에러가 발생한다.
-  } on UnsupportedError catch (error, stack) {
-    print("~/ 해당 연산자는 0으로 나눌 수 없습니다.");
-  } on TypeError catch (error, stack) {
-    print("Null 값이 참조 되었습니다.");
-  } catch (error, stack) {
-    // catch는 모든 에러 잡기
-    // print("$error");
-    rethrow; // 이미 잡은 에러를 다시 던지기 즉, main 밖으로 에러를 빼낸다.
-    // 즉, 프로그램 동작이 안된다.
-  }
+  todo().listen((event) {}); // listen을 이용하여 이벤트 발생
 }
