@@ -7,7 +7,7 @@ void main() {
 
   // double
   double num2 = 3.14;
-  double num3 = 3;
+  // double num3 = 3;
 
   // String
   String string = "Hello world";
