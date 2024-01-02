@@ -1,65 +1,43 @@
 void main() {
-  /** for
-   * for (기준 변수; 조건식; 가변치){
-   * 
-   * }
-   * 
-   */
-
-  /** for 예제
-   for (int i = 0; i < 10; i++) {
-    print("Running For Index $i");
+  int num1 = 10;
+  /** try catch finally
+  try {
+    // 예외 발생 가능 코드
+    // print(10 ~/ 0); // ~/ = 나눈 값의 몫을 출력
+    print(10 / 0);
+  } catch (error, stack) {
+    // 예외 발생시 동작하는 코드
+    print(error);
+    print(stack); // error가 발생한 순간을 찍는다
+  } finally {
+    // 예외가 발생하든, 발생하지 않든 무조건 실행
+    print("예외 처리 통과");
   }
    */
 
-  /** for in
-   * for(단일 변수 in 컬렉션 (List / Set / Map)){
-   *  컬랙션 내에 요소들의 수 / 변수 만큼 사용 될 반복문
-   * }
-   * 
-   */
-
-  /** for in 예제
-  List<int> indexes = [0, 1, 2, 3, 4, 5];
-  // int 혹은 final 둘다 사용 가능 단, for에서는 final 자주 사용
-  for (final index in indexes) {
-    print("Running For Index $index");
+  /** try on
+  try {
+    print(10 ~/ 0);
+    // Error를 세부적으로 잡을 때 on 사용
+  } on UnsupportedError catch (error, stack) {
+    print("~/ 해당 연산자는 0으로 나눌 수 없습니다.");
+  } on TypeError catch (error, stack) {
+    print("Null 값이 참조 되었습니다.");
+  } catch (error, stack) { // catch는 모든 에러 잡기
+    print("$error");
   }
    */
 
-  /** while
-   * while(조건식){
-   *  조건식이 참일 경우 실행 될 반복문
-   * }
-   */
-
-  /*
-  bool isRunning = true;
-  int count = 0;
-
-  while (isRunning) {
-    if (count >= 5) {
-      isRunning = false;
-    }
-    count++;
-
-    print("While is Running $count");
+  try {
+    throw Exception("Unknown Error"); // 예외를 만들어서 던진다. 즉, 에러가 발생한다.
+  } on UnsupportedError catch (error, stack) {
+    print("~/ 해당 연산자는 0으로 나눌 수 없습니다.");
+  } on TypeError catch (error, stack) {
+    print("Null 값이 참조 되었습니다.");
+  } catch (error, stack) {
+    // catch는 모든 에러 잡기
+    // print("$error");
+    rethrow; // 이미 잡은 에러를 다시 던지기 즉, main 밖으로 에러를 빼낸다.
+    // 즉, 프로그램 동작이 안된다.
   }
-   */
-
-  /** do while
-   * do{
-   *  선행 진행 코드
-   * } while (조건);
-   */
-
-  int num = 0;
-  do {
-    num++;
-
-    if (num == 4) {
-      continue;
-    }
-    print("Running Do While $num");
-  } while (num < 10);
 }
