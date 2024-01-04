@@ -100,3 +100,102 @@ Row
 - 수직축에 대해서만 값을 갖는다. 즉, 수평축에 대해선 값을 갖지 않는다.
     - mainAxisSize => Row의 메인인 수평축에 대한 값을 갖는다.
     - crossAxisAlignment => Row의 cross축인 수직축에 대한 값을 갖는다.
+
+SingleChildScrollView
+- 스크롤이 가능하게 한다.
+- ScrollDirection 옵션을 이용하여 수직축으로 스크롤할지, 수평축으로 스크롤할지 지정이 가능하다.
+    - Column이면 수직축 scrollDirection: Axis.vertical
+    - Row면 수평축 scrollDirection: Axis.horizontal
+```
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Widget Scroll"),
+        ),
+        body: Body(),
+      ),
+    ),
+  );
+}
+
+class Body extends StatelessWidget {
+  const Body({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Container(
+            color: Colors.grey,
+            width: double.infinity,
+            height: 100,
+            margin: EdgeInsets.symmetric(vertical: 8),
+          ),
+          Container(
+            color: Colors.grey,
+            width: double.infinity,
+            height: 100,
+            margin: EdgeInsets.symmetric(vertical: 8),
+          ),
+          Container(
+            color: Colors.grey,
+            width: double.infinity,
+            height: 100,
+            margin: EdgeInsets.symmetric(vertical: 8),
+          ),
+          Container(
+            color: Colors.grey,
+            width: double.infinity,
+            height: 100,
+            margin: EdgeInsets.symmetric(vertical: 8),
+          ),
+          Container(
+            color: Colors.grey,
+            width: double.infinity,
+            height: 100,
+            margin: EdgeInsets.symmetric(vertical: 8),
+          ),
+          Container(
+            color: Colors.grey,
+            width: double.infinity,
+            height: 100,
+            margin: EdgeInsets.symmetric(vertical: 8),
+          ),
+          Container(
+            color: Colors.grey,
+            width: double.infinity,
+            height: 100,
+            margin: EdgeInsets.symmetric(vertical: 8),
+          ),
+          Container(
+            color: Colors.grey,
+            width: double.infinity,
+            height: 100,
+            margin: EdgeInsets.symmetric(vertical: 8),
+          ),
+          Container(
+            color: Colors.grey,
+            width: double.infinity,
+            height: 100,
+            margin: EdgeInsets.symmetric(vertical: 8),
+          ),
+          Container(
+            color: Colors.grey,
+            width: double.infinity,
+            height: 100,
+            margin: EdgeInsets.symmetric(vertical: 8),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+```
