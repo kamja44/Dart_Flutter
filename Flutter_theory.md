@@ -257,3 +257,81 @@ class Body extends StatelessWidget {
   }
 }
 ```
+
+
+Expanded
+- Flexible과 마찬가지로 반응형 Display를 제작할 때 사용한다.
+    - 내부 객체의 크기(높낮이)와 상관없이 비율만 따진다.
+- 만일, 스크롤 기능을 추가했을 때 Expanded를 사용할 경우 에러가 발생한다.
+    - Expanded의 경우 객체의 크기(높낮이)와 상관없이 비율만 따지는데 스크롤 기능을 추가할 경우 객체의 크기를 모르기에 에러 발생
+
+```
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("반응형 Display with Expanded"),
+        ),
+        body: Body(),
+      ),
+    ),
+  );
+}
+
+class Body extends StatelessWidget {
+  const Body({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: double.infinity,
+          height: 200,
+          color: Colors.red,
+        ),
+        Expanded(
+          child: Container(
+            color: Colors.blue,
+            height: 100,
+          ),
+        ),
+        Flexible(
+          child: Container(
+            color: Colors.red,
+            height: 100,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+```
+
+- 에러가 발생하는 경우(스크롤)
+```
+children: [
+    Container(
+    width: 100,
+    height: 100,
+    color: Colors.purple,
+    margin: EdgeInsets.symmetric(vertical: 8),
+    ),
+    Expanded(
+    child: Container(
+        color: Colors.black,
+    ),
+    ),
+    Container(
+    width: 100,
+    height: 100,
+    color: Colors.purple,
+    margin: EdgeInsets.symmetric(vertical: 8),
+    ),
+]
+```
+- 이러한 경우 에러가 발생한다.
