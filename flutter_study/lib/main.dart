@@ -4,9 +4,7 @@ void main() {
   runApp(
     MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text("반응형 Display with Expanded"),
-        ),
+        appBar: AppBar(title: Text("Widget을 겹겹히 쌓아 배치하기")),
         body: Body(),
       ),
     ),
@@ -18,124 +16,36 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.purple,
-            margin: EdgeInsets.symmetric(vertical: 8),
+    return Stack(
+      children: [
+        Container(
+          width: 500,
+          height: 500,
+          color: Colors.black,
+        ),
+        Container(
+          width: 400,
+          height: 400,
+          color: Colors.red,
+        ),
+        Align(
+          alignment: Alignment.bottomLeft,
+          child: Container(
+            width: 300,
+            height: 300,
+            color: Colors.blue,
           ),
-          Expanded(
-            child: Container(
-              color: Colors.black,
-            ),
+        ),
+        Positioned(
+          bottom: 50,
+          right: 30,
+          child: Container(
+            width: 200,
+            height: 200,
+            color: Colors.green,
           ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.purple,
-            margin: EdgeInsets.symmetric(vertical: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.purple,
-            margin: EdgeInsets.symmetric(vertical: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.purple,
-            margin: EdgeInsets.symmetric(vertical: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.purple,
-            margin: EdgeInsets.symmetric(vertical: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.purple,
-            margin: EdgeInsets.symmetric(vertical: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.purple,
-            margin: EdgeInsets.symmetric(vertical: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.purple,
-            margin: EdgeInsets.symmetric(vertical: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.purple,
-            margin: EdgeInsets.symmetric(vertical: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.purple,
-            margin: EdgeInsets.symmetric(vertical: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.purple,
-            margin: EdgeInsets.symmetric(vertical: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.purple,
-            margin: EdgeInsets.symmetric(vertical: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.purple,
-            margin: EdgeInsets.symmetric(vertical: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.purple,
-            margin: EdgeInsets.symmetric(vertical: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.purple,
-            margin: EdgeInsets.symmetric(vertical: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.purple,
-            margin: EdgeInsets.symmetric(vertical: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.purple,
-            margin: EdgeInsets.symmetric(vertical: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.purple,
-            margin: EdgeInsets.symmetric(vertical: 8),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

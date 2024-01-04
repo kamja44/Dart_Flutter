@@ -335,3 +335,66 @@ children: [
 ]
 ```
 - 이러한 경우 에러가 발생한다.
+
+Stack
+- Widget을 쌓는다.
+- Stack은 뒤에 선언한 객체일수록 앞에 쌓이게 된다.
+- Positioned Widget을 이용하여 child의 위치를 조작할 수 있다.
+    - absolute와 동일한 개념
+    - 수치를 이용하여 직접 조작
+- Align Widget을 이용하여 Child의 위치를 조작할 수 있다.
+    - x, y의 %를 직접 줄 수 있고, 미리 정의된 값을 이용하여 조작할 수 있다.
+```
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text("Widget을 겹겹히 쌓아 배치하기")),
+        body: Body(),
+      ),
+    ),
+  );
+}
+
+class Body extends StatelessWidget {
+  const Body({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          width: 500,
+          height: 500,
+          color: Colors.black,
+        ),
+        Container(
+          width: 400,
+          height: 400,
+          color: Colors.red,
+        ),
+        Align(
+          alignment: Alignment.bottomLeft,
+          child: Container(
+            width: 300,
+            height: 300,
+            color: Colors.blue,
+          ),
+        ),
+        Positioned(
+          bottom: 50,
+          right: 30,
+          child: Container(
+            width: 200,
+            height: 200,
+            color: Colors.green,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+```
