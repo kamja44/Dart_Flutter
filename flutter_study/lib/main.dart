@@ -18,6 +18,12 @@ void main() {
           title: const Text("This is App Bar"),
         ),
         body: const TestWidget(),
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.bug_report),
+          onPressed: () {
+            print("Tab FAB!");
+          },
+        ),
       ),
     ),
   );
