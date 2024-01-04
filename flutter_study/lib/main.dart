@@ -5,41 +5,44 @@ void main() {
     MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.home),
-              onPressed: () {
-                print("Pressed!");
-              },
-            ),
-            const Icon(Icons.play_arrow),
-          ],
-          centerTitle: true,
-          title: const Text("This is App Bar"),
+          title: Text("Study to Container"),
         ),
-        body: const TestWidget(),
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.bug_report),
-          onPressed: () {
-            print("Tab FAB!");
-          },
-        ),
+        body: CustomContainer(),
       ),
     ),
   );
 }
 
-class TestWidget extends StatelessWidget {
-  const TestWidget({super.key});
+class CustomContainer extends StatelessWidget {
+  const CustomContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: Center(
-        child: Text(
-          "Hello, Flutter",
-          style: TextStyle(
-            color: Colors.black,
+    return Center(
+      child: Container(
+        width: 300,
+        height: 300,
+        decoration: BoxDecoration(
+            color: Colors.red.shade200,
+            border: Border.all(
+                color: Colors.red, width: 5, style: BorderStyle.solid),
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: const [
+              BoxShadow(
+                  color: Colors.black,
+                  offset: Offset(6, 6),
+                  blurRadius: 10,
+                  spreadRadius: 10),
+              BoxShadow(
+                  color: Colors.blue,
+                  offset: Offset(-6, -6),
+                  blurRadius: 10,
+                  spreadRadius: 10),
+            ]),
+        child: Center(
+          child: Container(
+            color: Colors.yellow,
+            child: Text("Hello Container"),
           ),
         ),
       ),
