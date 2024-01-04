@@ -5,46 +5,61 @@ void main() {
     MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Study to Container"),
+          title: Text("Widget을 상하로 배치하기"),
+          centerTitle: true,
         ),
-        body: CustomContainer(),
+        body: Body(),
       ),
     ),
   );
 }
 
-class CustomContainer extends StatelessWidget {
-  const CustomContainer({super.key});
+class Body extends StatelessWidget {
+  const Body({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: 300,
-        height: 300,
-        decoration: BoxDecoration(
-            color: Colors.red.shade200,
-            border: Border.all(
-                color: Colors.red, width: 5, style: BorderStyle.solid),
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: const [
-              BoxShadow(
-                  color: Colors.black,
-                  offset: Offset(6, 6),
-                  blurRadius: 10,
-                  spreadRadius: 10),
-              BoxShadow(
-                  color: Colors.blue,
-                  offset: Offset(-6, -6),
-                  blurRadius: 10,
-                  spreadRadius: 10),
-            ]),
-        child: Center(
-          child: Container(
-            color: Colors.yellow,
-            child: Text("Hello Container"),
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Row(
+            // mainAxisSize: MainAxisSize.max, // mainAxisSize => Column 들의 최대 높이, 최소높이를 지정할 수 있다.
+            mainAxisAlignment: MainAxisAlignment
+                .center, // mainAxisAlignment => Column들의 수직축의 위치를 조정한다.
+            crossAxisAlignment:
+                CrossAxisAlignment.center, // Column 들의 수평축의 위치를 조정한다.
+            children: [
+              Container(
+                color: Colors.red,
+                width: 100,
+                height: 100,
+                child: Text("Container 1"),
+              ),
+              Container(
+                color: Colors.green,
+                width: 100,
+                height: 100,
+                child: Text("Container 2"),
+              ),
+              Container(
+                color: Colors.blue,
+                width: 100,
+                height: 100,
+                child: Text("Container 3"),
+              ),
+            ],
           ),
-        ),
+          Container(
+            width: 300,
+            height: 120,
+            color: Colors.grey,
+            child: Text("Conatiner 4"),
+          ),
+        ],
       ),
     );
   }

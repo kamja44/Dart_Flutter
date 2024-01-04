@@ -28,3 +28,75 @@ Container(
       child: Text("Hello Container"),
     );
 ```
+
+
+Placeholder
+- 이 위치에 위젯이 오니 지정한 크기만큼 자리를 차지한다.
+
+Column
+- 수평길이에 대해서만 값을 갖는다. 즉, 수직축에 대한 값은 없다.
+    - mainAxisAlignment => Column의 메인인 수직의 값을 조정한다.
+    - crossAxisAlignment => Column의 cross인 수평의 값을 조정한다.
+```
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Widget을 상하로 배치하기"),
+          centerTitle: true,
+        ),
+        body: Body(),
+      ),
+    ),
+  );
+}
+
+class Body extends StatelessWidget {
+  const Body({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      child: Column(
+        // mainAxisSize: MainAxisSize.max, // mainAxisSize => Column 들의 최대 높이, 최소높이를 지정할 수 있다.
+        mainAxisAlignment: MainAxisAlignment
+            .center, // mainAxisAlignment => Column들의 수직축의 위치를 조정한다.
+        crossAxisAlignment:
+            CrossAxisAlignment.center, // Column 들의 수평축의 위치를 조정한다.
+        children: [
+          Container(
+            color: Colors.red,
+            width: 100,
+            height: 100,
+            child: Text("Container 1"),
+          ),
+          Container(
+            color: Colors.green,
+            width: 100,
+            height: 100,
+            child: Text("Container 2"),
+          ),
+          Container(
+            color: Colors.blue,
+            width: 100,
+            height: 100,
+            child: Text("Container 3"),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+```
+
+Row
+- 위의 코드에서 Column을 Row로 변경
+- 수직축에 대해서만 값을 갖는다. 즉, 수평축에 대해선 값을 갖지 않는다.
+    - mainAxisSize => Row의 메인인 수평축에 대한 값을 갖는다.
+    - crossAxisAlignment => Row의 cross축인 수직축에 대한 값을 갖는다.
