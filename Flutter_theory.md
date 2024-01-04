@@ -398,3 +398,65 @@ class Body extends StatelessWidget {
 }
 
 ```
+
+Constraints
+- UI의 제약 조건
+- 부모의 크기는 500, 500
+    - 자식의 크기는 300, 300
+        - Align이나 Center 등 으로 위치를 잡아줘야 자식의 크기가 제대로 잡힌다.
+            - Align이 없을 경우 자식이 부모의 크기를 상속받는다.
+```
+class ConstraintsWidget extends StatelessWidget {
+  const ConstraintsWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 500,
+      width: 500,
+      color: Colors.blue,
+      child: Center(
+        child: Container(
+          constraints: BoxConstraints(
+            minHeight: 50,
+            minWidth: 50,
+            maxHeight: 100,
+            maxWidth: 100,
+          ),
+          color: Colors.red,
+          height: 300,
+          width: 300,
+        ),
+      ),
+    );
+  }
+}
+
+```
+
+UnconstrainedBox
+- 부모의 제약을 무시한다.
+```
+class ConstraintsWidget extends StatelessWidget {
+  const ConstraintsWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 500,
+      width: 500,
+      color: Colors.blue,
+      child: Center(
+        child: UnconstrainedBox(
+          child: Container(
+            width: 300,
+            height: 700,
+            color: Colors.red,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+```

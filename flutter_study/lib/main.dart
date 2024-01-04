@@ -1,53 +1,42 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(
-    MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text("Widget을 겹겹히 쌓아 배치하기")),
-        body: Body(),
-      ),
-    ),
-  );
+  runApp(MaterialApp(
+    home: HomeWidget(),
+  ));
 }
 
-class Body extends StatelessWidget {
-  const Body({super.key});
+class HomeWidget extends StatelessWidget {
+  const HomeWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Align(
-          alignment: Alignment.center,
+    return const SafeArea(
+      child: Scaffold(
+        body: ConstraintsWidget(),
+      ),
+    );
+  }
+}
+
+class ConstraintsWidget extends StatelessWidget {
+  const ConstraintsWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 500,
+      width: 500,
+      color: Colors.blue,
+      child: Center(
+        child: UnconstrainedBox(
           child: Container(
             width: 300,
-            height: 300,
-            decoration: BoxDecoration(
-              color: Colors.red,
-              borderRadius: BorderRadius.circular(150),
-            ),
+            height: 700,
+            color: Colors.red,
           ),
         ),
-        Align(
-          alignment: Alignment.center,
-          child: Container(
-            width: 280,
-            height: 280,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(140),
-            ),
-          ),
-        ),
-        Align(
-          alignment: Alignment.center,
-          child: Text(
-            "Count 0",
-            style: TextStyle(color: Colors.red, fontSize: 32),
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
