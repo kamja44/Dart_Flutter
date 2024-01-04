@@ -5,7 +5,7 @@ void main() {
     MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Widget Scroll"),
+          title: Text("Widget을 비율로 배치하기(반응형 Display)"),
         ),
         body: Body(),
       ),
@@ -18,74 +18,33 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Container(
-            color: Colors.grey,
-            width: 100,
-            height: 100,
-            margin: EdgeInsets.symmetric(horizontal: 8),
+    return Column(
+      children: [
+        Flexible(
+          flex: 1,
+          child: Container(
+            color: Colors.red,
           ),
-          Container(
-            color: Colors.grey,
-            width: 100,
-            height: 100,
-            margin: EdgeInsets.symmetric(horizontal: 8),
+        ),
+        Flexible(
+          flex: 2,
+          child: Container(
+            color: Colors.blue,
           ),
-          Container(
-            color: Colors.grey,
-            width: 100,
-            height: 100,
-            margin: EdgeInsets.symmetric(horizontal: 8),
+        ),
+        Flexible(
+          flex: 3,
+          child: Container(
+            color: Colors.yellow,
           ),
-          Container(
-            color: Colors.grey,
-            width: 100,
-            height: 100,
-            margin: EdgeInsets.symmetric(horizontal: 8),
+        ),
+        Flexible(
+          flex: 4,
+          child: Container(
+            color: Colors.purple,
           ),
-          Container(
-            color: Colors.grey,
-            width: 100,
-            height: 100,
-            margin: EdgeInsets.symmetric(horizontal: 8),
-          ),
-          Container(
-            color: Colors.grey,
-            width: 100,
-            height: 100,
-            margin: EdgeInsets.symmetric(horizontal: 8),
-          ),
-          Container(
-            color: Colors.grey,
-            width: 100,
-            height: 100,
-            margin: EdgeInsets.symmetric(horizontal: 8),
-          ),
-          Container(
-            color: Colors.grey,
-            width: 100,
-            height: 100,
-            margin: EdgeInsets.symmetric(horizontal: 8),
-          ),
-          Container(
-            color: Colors.grey,
-            width: 100,
-            height: 100,
-            margin: EdgeInsets.symmetric(horizontal: 8),
-          ),
-          Container(
-            color: Colors.grey,
-            width: 100,
-            height: 100,
-            margin: EdgeInsets.symmetric(horizontal: 8),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

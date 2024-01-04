@@ -199,3 +199,61 @@ class Body extends StatelessWidget {
 }
 
 ```
+
+Flex
+- 반응형 Display 만들기
+- Flexible Widget 사용
+    - flex 옵션을 사용하여 전체 비율에서 몇%를 사용할지 지정할 수 있다.
+    - 안의 객체의 size에 따라 비율이 줄어들 수 있다.
+```
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Widget을 비율로 배치하기(반응형 Display)"),
+        ),
+        body: Body(),
+      ),
+    ),
+  );
+}
+
+class Body extends StatelessWidget {
+  const Body({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Flexible(
+          flex: 1,
+          child: Container(
+            color: Colors.red,
+          ),
+        ),
+        Flexible(
+          flex: 2,
+          child: Container(
+            color: Colors.blue,
+          ),
+        ),
+        Flexible(
+          flex: 3,
+          child: Container(
+            color: Colors.yellow,
+          ),
+        ),
+        Flexible(
+          flex: 4,
+          child: Container(
+            color: Colors.purple,
+          ),
+        ),
+      ],
+    );
+  }
+}
+```
