@@ -18,31 +18,33 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(
-          width: 500,
-          height: 500,
-          color: Colors.black,
-        ),
-        Container(
-          width: 400,
-          height: 400,
-          color: Colors.red,
-        ),
         Align(
-          alignment: Alignment.bottomLeft,
+          alignment: Alignment.center,
           child: Container(
             width: 300,
             height: 300,
-            color: Colors.blue,
+            decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.circular(150),
+            ),
           ),
         ),
-        Positioned(
-          bottom: 50,
-          right: 30,
+        Align(
+          alignment: Alignment.center,
           child: Container(
-            width: 200,
-            height: 200,
-            color: Colors.green,
+            width: 280,
+            height: 280,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(140),
+            ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.center,
+          child: Text(
+            "Count 0",
+            style: TextStyle(color: Colors.red, fontSize: 32),
           ),
         ),
       ],
