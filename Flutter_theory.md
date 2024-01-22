@@ -599,3 +599,21 @@ class _ExampleStatefulState extends State<ExampleStateful> {
 }
 
 ```
+
+LifeCycle
+- Stateless Widget Lifecycle
+  - 한번 만들어지면 rebuild 불가능
+1. Create
+2. build()
+3. dispose
+
+- Stateful Widget Lifecycle
+1. Create Widget
+2. Create State<Widget>
+3. initState()
+4. build()
+- build()과정 안에 초기값 지정 시 rebuild시 값이 초기화된다. 즉, 초기값은 initState()에서 설정한다.
+4-1. setState(), didUpdatedWidget()
+5. deactivate
+6. dispose()
+7. Dispose
