@@ -460,3 +460,142 @@ class ConstraintsWidget extends StatelessWidget {
 }
 
 ```
+
+setState()
+- stateFul 위젯에서 사용
+- 값이 바뀌는 변수를 위젯에 알려줄 때 setState() 안에서 사용해야 위젯에 변경된 값을 알려줄 수 있다.
+```
+return Expanded(
+      flex: 1,
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            if (index == 5) {
+              index = 0;
+              return;
+            }
+            index++;
+          });
+        },
+        child: Container(
+          color: Colors.blue.withOpacity(index / 5),
+          child: Center(
+            child: Text("$index"),
+          ),
+        ),
+      ),
+    );
+```
+
+initState
+- 초기값 설정
+- initState() 사용시 안에 super.initState(); 작성이 필수
+```
+  late int index; // or int? index
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    index = 5;
+  }
+```
+
+dispose()
+- 위젯의 동작이 끝났음을 알리는 메소드
+- dispose를 사용해야 리소스 절약이 가능하다.
+- super.dispose()를 작성해야 한다.
+  - initState는 super.initState()작성 후 코드를 작성했지만, dispose 경우 super.dispose()가 가장 끝에 와야한다.
+```
+  late int index; // or int? index
+  late TextEditingController textController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    index = 5;
+    textController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    textController.dispose();
+    super.dispose();
+  }
+```
+
+위젯에 매개변수 사용하기
+- late int _index를 선언한 후, initState()에서 _index = index를 사용하여 private 변수로 사용한다.
+```
+ExampleStateful(index: 3),
+
+class ExampleStateless extends StatelessWidget {
+  const ExampleStateless({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 1,
+      child: Container(
+        color: Colors.red,
+      ),
+    );
+  }
+}
+
+class ExampleStateful extends StatefulWidget {
+  final int index;
+
+  const ExampleStateful({required this.index, super.key});
+
+  @override
+  State<ExampleStateful> createState() => _ExampleStatefulState();
+}
+
+class _ExampleStatefulState extends State<ExampleStateful> {
+  late int _index;
+  late TextEditingController textController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _index = widget.index;
+    textController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    textController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 1,
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            if (_index == 5) {
+              _index = 0;
+              return;
+            }
+            _index++;
+          });
+        },
+        child: Container(
+          color: Colors.blue.withOpacity(_index / 5),
+          child: Center(
+            child: Text("$_index"),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+```
