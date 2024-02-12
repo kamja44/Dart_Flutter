@@ -24,76 +24,50 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(children: [
-      ExampleStateless(),
-      ExampleStateful(index: 3),
-    ]);
-  }
-}
-
-class ExampleStateless extends StatelessWidget {
-  const ExampleStateless({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: Container(
-        color: Colors.red,
-      ),
+    return Column(
+      children: [
+        TestCheckBox(),
+      ],
     );
   }
 }
 
-class ExampleStateful extends StatefulWidget {
-  final int index;
-
-  const ExampleStateful({required this.index, super.key});
+class TestCheckBox extends StatefulWidget {
+  const TestCheckBox({super.key});
 
   @override
-  State<ExampleStateful> createState() => _ExampleStatefulState();
+  State<TestCheckBox> createState() => _TestCheckBoxState();
 }
 
-class _ExampleStatefulState extends State<ExampleStateful> {
-  late int _index;
-  late TextEditingController textController;
+class _TestCheckBoxState extends State<TestCheckBox> {
+  late List<bool> values;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    _index = widget.index;
-    textController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    textController.dispose();
-    super.dispose();
+    values = [false, false, false];
   }
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: GestureDetector(
-        onTap: () {
-          setState(() {
-            if (_index == 5) {
-              _index = 0;
-              return;
-            }
-            _index++;
-          });
-        },
-        child: Container(
-          color: Colors.blue.withOpacity(_index / 5),
-          child: Center(
-            child: Text("$_index"),
-          ),
-        ),
-      ),
+    return Row(
+      children: [
+        Checkbox(
+            value: values[0],
+            onChanged: (value) => changeValue(0, value: value)),
+        Checkbox(
+            value: values[1],
+            onChanged: (value) => changeValue(1, value: value)),
+        Checkbox(
+            value: values[2],
+            onChanged: (value) => changeValue(2, value: value)),
+      ],
     );
+  }
+
+  void changeValue(int index, {bool? value = false}) {
+    setState(() {
+      values[index] = value!;
+    });
   }
 }
