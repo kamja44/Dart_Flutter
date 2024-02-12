@@ -27,6 +27,7 @@ class Body extends StatelessWidget {
     return Column(
       children: [
         TestCheckBox(),
+        TestRadioButton(),
       ],
     );
   }
@@ -69,5 +70,56 @@ class _TestCheckBoxState extends State<TestCheckBox> {
     setState(() {
       values[index] = value!;
     });
+  }
+}
+
+enum TestRadioValue {
+  test1,
+  test2,
+  test3;
+}
+
+class TestRadioButton extends StatefulWidget {
+  const TestRadioButton({super.key});
+
+  @override
+  State<TestRadioButton> createState() => _TestRadioButtonState();
+}
+
+class _TestRadioButtonState extends State<TestRadioButton> {
+  TestRadioValue? selectValue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ListTile(
+          leading: Radio<TestRadioValue>(
+              value: TestRadioValue.test1,
+              groupValue: selectValue,
+              onChanged: (value) => setState(() {
+                    selectValue = value!;
+                  })),
+          title: Text(TestRadioValue.test1.name),
+          onTap: () => setState(() {
+            if (selectValue != TestRadioValue.test1) {
+              selectValue = TestRadioValue.test1;
+            }
+          }),
+        ),
+        Radio<TestRadioValue>(
+            value: TestRadioValue.test2,
+            groupValue: selectValue,
+            onChanged: (value) => setState(() {
+                  selectValue = value!;
+                })),
+        Radio<TestRadioValue>(
+            value: TestRadioValue.test3,
+            groupValue: selectValue,
+            onChanged: (value) => setState(() {
+                  selectValue = value!;
+                })),
+      ],
+    );
   }
 }
