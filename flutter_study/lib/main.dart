@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/screen/new_page.dart';
+import 'package:go_router/go_router.dart';
 
 const assetsPath = "assets/images";
 const bannerImage = "$assetsPath/빵빵.jpg";
 
 void main() {
-  runApp(const MaterialApp(
-    home: HomeWidget(),
+  runApp(MaterialApp.router(
+    routerConfig: GoRouter(initialLocation: "/", routes: [
+      GoRoute(
+          path: "/", name: "home", builder: (context, _) => const HomeWidget()),
+      GoRoute(
+          path: "/new", name: "new", builder: (context, _) => const NewPage()),
+      GoRoute(
+          path: "/new1",
+          name: "new2",
+          builder: (context, _) => const NewPage2()),
+    ]),
   ));
 }
 
@@ -21,16 +31,7 @@ class HomeWidget extends StatelessWidget {
       ),
       body: Center(
         child: TextButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return const NewPage();
-                },
-              ),
-            );
-          },
+          onPressed: () => context.pushNamed("new"),
           child: const Text("Go to Page"),
         ),
       ),
