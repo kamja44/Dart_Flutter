@@ -1,55 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/style/theme.dart';
-
-const assetsPath = "assets/images";
-const bannerImage = "$assetsPath/빵빵.jpg";
+import 'package:flutter_study/game/game_body.dart';
 
 void main() {
-  runApp(
-    MaterialApp(
-      home: const HomeWidget(),
-      theme: customTheme,
-    ),
-  );
+  runApp(const RSPApp());
 }
 
-class HomeWidget extends StatefulWidget {
-  const HomeWidget({super.key});
+class RSPApp extends StatelessWidget {
+  const RSPApp({super.key});
 
-  @override
-  State<HomeWidget> createState() => _HomeWidgetState();
-}
-
-class _HomeWidgetState extends State<HomeWidget> {
-  int count = 0;
   @override
   Widget build(BuildContext context) {
-    final textTheme = customTheme.textTheme;
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Flutter Theme"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              "Press Count",
-              style: textTheme.bodyLarge,
-            ),
-            Text(
-              "$count",
-              style: textTheme.displayLarge,
-            ),
-          ],
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("가위 바위 보!"),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            count++;
-          });
-        },
+        body: const GameBody(),
       ),
     );
   }
